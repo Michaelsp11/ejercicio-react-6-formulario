@@ -38,7 +38,12 @@ function App() {
       contrasenya: contrasenya,
     });
   };
-  const guardarLogin = () => {};
+  const guardarLogin = (recordar) => {
+    setFormulario({
+      ...formulario,
+      recordarContrasenya: recordar,
+    });
+  };
   return (
     <div className="container">
       <div className="row align-items-center vh-100">
@@ -66,7 +71,7 @@ function App() {
               siguiente={next}
             />
           )}
-          {nPaso === 4 && <Resumen />}
+          {nPaso === 4 && <Resumen formulario={formulario} />}
         </div>
       </div>
     </div>

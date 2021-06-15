@@ -30,7 +30,7 @@ export const Paso1 = (props) => {
       <Titulo titulo="Datos Personales" />
       <form>
         <div className="form-group">
-          <label htmlFor="nombre pl-3">Nombre:</label>
+          <label htmlFor="nombre">Nombre:</label>
           <input
             type="text"
             className="form-control"
@@ -43,7 +43,7 @@ export const Paso1 = (props) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="apellidos pl-3">Apellidos:</label>
+          <label htmlFor="apellidos">Apellidos:</label>
           <input
             type="text"
             className="form-control"
@@ -56,7 +56,7 @@ export const Paso1 = (props) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="fecha pl-3">Fecha de nacimiento:</label>
+          <label htmlFor="fecha">Fecha de nacimiento:</label>
           <input
             type="date"
             className="form-control"
@@ -71,7 +71,7 @@ export const Paso1 = (props) => {
           <label>{edad} Años</label>
         </div>
         <div className="form-group">
-          <label htmlFor="correo pl-3">Correo electrónico:</label>
+          <label htmlFor="correo">Correo electrónico:</label>
           <input
             type="email"
             className="form-control"

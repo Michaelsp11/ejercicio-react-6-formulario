@@ -27,7 +27,7 @@ export const Paso2 = (props) => {
       <Titulo titulo="Datos de acceso" />
       <form>
         <div className="form-group">
-          <label htmlFor="nombre pl-3">Nombre de usuario:</label>
+          <label htmlFor="nombre">Nombre de usuario:</label>
           <input
             type="text"
             className="form-control"
@@ -40,7 +40,7 @@ export const Paso2 = (props) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password pl-3">Contraseña:</label>
+          <label htmlFor="password">Contraseña:</label>
           <input
             type="password"
             className="form-control"
@@ -53,7 +53,7 @@ export const Paso2 = (props) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="repetirPassword pl-3">Repetir contrasenya:</label>
+          <label htmlFor="repetirPassword">Repetir contrasenya:</label>
           <input
             type="password"
             className="form-control"
