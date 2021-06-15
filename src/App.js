@@ -14,7 +14,6 @@ function App() {
     correo: "",
     nombreUsuario: "",
     contrasenya: "",
-    repetirContrasenya: "",
     recordarContrasenya: false,
   });
   const next = () => {
@@ -32,7 +31,13 @@ function App() {
       correo: correo,
     });
   };
-  const guardarDatosAcceso = () => {};
+  const guardarDatosAcceso = (nombreUsuario, contrasenya) => {
+    setFormulario({
+      ...formulario,
+      nombreUsuario: nombreUsuario,
+      contrasenya: contrasenya,
+    });
+  };
   const guardarLogin = () => {};
   return (
     <div className="container">

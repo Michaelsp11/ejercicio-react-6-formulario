@@ -3,23 +3,19 @@ import { Boton } from "./Boton";
 import { useEffect, useState } from "react";
 export const Paso2 = (props) => {
   const { formulario, guardarDatos, siguiente, anterior } = props;
-  const { nombre, apellidos, fecha, correo } = formulario;
+  const { nombreUsuario, contrasenya } = formulario;
   const [btnBloqueado, setBtnBloqueado] = useState(true);
-  const [nombreForm, setNombreForm] = useState(formulario.nombre);
-  const [apellidosForm, setApellidosForm] = useState(formulario.apellidos);
-  const [fechaForm, setFechaForm] = useState(formulario.fecha);
-  const [correoForm, setCorreoForm] = useState(formulario.correo);
-  const [edad, setEdad] = useState("0");
-  const calcularEdad = (fecha) =>
-    setEdad(new Date().getFullYear() - new Date(fecha).getFullYear());
+  const [nombreForm, setNombreForm] = useState(nombreUsuario);
+  const [contrasenyaForm, setContrasenyaForm] = useState(contrasenya);
+  const [repetirContrasenyaForm, setRepetirContrasenyaForm] =
+    useState(contrasenya);
+  const mismaPassword = () => repetirContrasenyaForm === contrasenyaForm;
   const compruebaFormulario = () => {
-    if (
-      nombreForm !== "" &&
-      apellidosForm !== "" &&
-      fechaForm !== "" &&
-      correoForm !== ""
-    ) {
-      setBtnBloqueado(false);
+    if (nombreForm !== "" && contrasenyaForm !== "") {
+      if (mismaPassword()) {
+        setBtnBloqueado(false);
+        return;
+      }
     }
     setBtnBloqueado(true);
   };
@@ -31,12 +27,12 @@ export const Paso2 = (props) => {
       <Titulo titulo="Datos de acceso" />
       <form>
         <div className="form-group">
-          <label htmlFor="nombre pl-3">Nombre:</label>
+          <label htmlFor="nombre pl-3">Nombre de usuario:</label>
           <input
             type="text"
             className="form-control"
             id="nombre"
-            defaultValue={nombre}
+            defaultValue={nombreUsuario}
             onChange={(e) => {
               setNombreForm(e.target.value);
               compruebaFormulario();
@@ -44,42 +40,27 @@ export const Paso2 = (props) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="apellidos pl-3">Apellidos:</label>
+          <label htmlFor="password pl-3">Contraseña:</label>
           <input
-            type="text"
+            type="password"
             className="form-control"
-            id="apellidos"
-            defaultValue={apellidos}
+            id="password"
+            defaultValue={contrasenya}
             onChange={(e) => {
-              setApellidosForm(e.target.value);
+              setContrasenyaForm(e.target.value);
               compruebaFormulario();
             }}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="fecha pl-3">Fecha de nacimiento:</label>
+          <label htmlFor="repetirPassword pl-3">Repetir contrasenya:</label>
           <input
-            type="date"
+            type="password"
             className="form-control"
-            id="fecha"
-            defaultValue={fecha}
+            id="repetirPassword"
+            defaultValue={contrasenya}
             onChange={(e) => {
-              setFechaForm(e.target.value);
-              calcularEdad(e.target.value);
-              compruebaFormulario();
-            }}
-          />
-          <label>{edad} Años</label>
-        </div>
-        <div className="form-group">
-          <label htmlFor="correo pl-3">Correo electrónico:</label>
-          <input
-            type="email"
-            className="form-control"
-            id="correo"
-            defaultValue={correo}
-            onChange={(e) => {
-              setCorreoForm(e.target.value);
+              setRepetirContrasenyaForm(e.target.value);
               compruebaFormulario();
             }}
           />
@@ -88,7 +69,6 @@ export const Paso2 = (props) => {
           texto="Anterior"
           desactivado={false}
           accion={() => {
-            guardarDatos(nombreForm, apellidosForm, fechaForm, correoForm);
             anterior();
           }}
         />
@@ -96,7 +76,7 @@ export const Paso2 = (props) => {
           texto="Siguiente"
           desactivado={btnBloqueado}
           accion={() => {
-            guardarDatos(nombreForm, apellidosForm, fechaForm, correoForm);
+            guardarDatos(nombreForm, contrasenyaForm);
             siguiente();
           }}
         />

@@ -5,10 +5,10 @@ export const Paso1 = (props) => {
   const { formulario, guardarDatos, siguiente } = props;
   const { nombre, apellidos, fecha, correo } = formulario;
   const [btnBloqueado, setBtnBloqueado] = useState(true);
-  const [nombreForm, setNombreForm] = useState(formulario.nombre);
-  const [apellidosForm, setApellidosForm] = useState(formulario.apellidos);
-  const [fechaForm, setFechaForm] = useState(formulario.fecha);
-  const [correoForm, setCorreoForm] = useState(formulario.correo);
+  const [nombreForm, setNombreForm] = useState(nombre);
+  const [apellidosForm, setApellidosForm] = useState(apellidos);
+  const [fechaForm, setFechaForm] = useState(fecha);
+  const [correoForm, setCorreoForm] = useState(correo);
   const [edad, setEdad] = useState("0");
   const calcularEdad = (fecha) =>
     setEdad(new Date().getFullYear() - new Date(fecha).getFullYear());
